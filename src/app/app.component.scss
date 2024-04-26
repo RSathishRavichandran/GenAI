@@ -1,0 +1,19 @@
+/* app.component.scss */
+
+.container {
+    // display: flex;
+    height: 100vh;
+  }
+  
+  /* Position sidebar on the left */
+  app-sidebar {
+    flex: 0 0 250px; /* Set sidebar width */
+  }
+  
+  /* Expand chat window to fill remaining space */
+  router-outlet {
+    display: block; /* Ensure it's treated as a block element */
+    // flex: 1; /* Fill remaining vertical space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Optional: Add padding for spacing */
+  }

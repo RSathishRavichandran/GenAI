@@ -1,0 +1,40 @@
+<div class="chat-window">
+    <div #messagesContainer class="messages-container">
+    <div *ngFor="let message of messages">
+    <ng-container *ngIf="message.fromBot && message.text === 'show table'; else chatMessage">
+        <!-- Render table when message identifier is 'table' -->
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of tableData">
+                <td>{{ row.id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.age }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+      <ng-template #chatMessage>
+        <!-- Render regular chat message -->
+        <div [ngClass]="{'message': true, 'from-bot': message.fromBot}">
+          {{ message.text }}
+        </div>
+      </ng-template>
+</div>
+</div>
+    
+     
+    <div class="input-container">
+        <textarea type="text"  placeholder="Type a message..." pInputText  [(ngModel)]="newMessageText" (keydown.enter)="sendMessage()"></textarea>
+      
+        <button type="button" (click)="sendMessage()"  pButton icon="pi pi-send" label="Send"></button>
+      </div>
+  </div>
